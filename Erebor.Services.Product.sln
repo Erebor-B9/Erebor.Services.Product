@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1AB24E0B-4011-41B6-A547-21CE56D4C3D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0E1891A6-79E0-4E53-A3B2-BD51013D4BFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Erebor.Service.Product.Core", "src\Erebor.Service.Product.Core\Erebor.Service.Product.Core.csproj", "{D5A9691B-2165-4190-A12B-52E2E9EC5FE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Erebor.Service.Product.Domain", "src\Erebor.Service.Product.Domain\Erebor.Service.Product.Domain.csproj", "{2ADAC018-6C2D-483D-AAAC-C9F89D50AAAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Erebor.Service.Product.Api", "src\Erebor.Service.Product.Api\Erebor.Service.Product.Api.csproj", "{683CE08F-4B2A-46C6-93EB-0BC4B73814BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Erebor.Service.Product.Infrastructure", "src\Erebor.Service.Product.Infrastructure\Erebor.Service.Product.Infrastructure.csproj", "{B3B8F400-9B94-468E-BBD8-45E8D1974B79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5A9691B-2165-4190-A12B-52E2E9EC5FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A9691B-2165-4190-A12B-52E2E9EC5FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A9691B-2165-4190-A12B-52E2E9EC5FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A9691B-2165-4190-A12B-52E2E9EC5FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ADAC018-6C2D-483D-AAAC-C9F89D50AAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ADAC018-6C2D-483D-AAAC-C9F89D50AAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ADAC018-6C2D-483D-AAAC-C9F89D50AAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ADAC018-6C2D-483D-AAAC-C9F89D50AAAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683CE08F-4B2A-46C6-93EB-0BC4B73814BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683CE08F-4B2A-46C6-93EB-0BC4B73814BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683CE08F-4B2A-46C6-93EB-0BC4B73814BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683CE08F-4B2A-46C6-93EB-0BC4B73814BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3B8F400-9B94-468E-BBD8-45E8D1974B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B8F400-9B94-468E-BBD8-45E8D1974B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B8F400-9B94-468E-BBD8-45E8D1974B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B8F400-9B94-468E-BBD8-45E8D1974B79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D5A9691B-2165-4190-A12B-52E2E9EC5FE9} = {1AB24E0B-4011-41B6-A547-21CE56D4C3D0}
+		{2ADAC018-6C2D-483D-AAAC-C9F89D50AAAE} = {1AB24E0B-4011-41B6-A547-21CE56D4C3D0}
+		{683CE08F-4B2A-46C6-93EB-0BC4B73814BC} = {1AB24E0B-4011-41B6-A547-21CE56D4C3D0}
+		{B3B8F400-9B94-468E-BBD8-45E8D1974B79} = {1AB24E0B-4011-41B6-A547-21CE56D4C3D0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {944C4892-F263-426B-8FAC-B1AECF39E873}
+	EndGlobalSection
+EndGlobal
