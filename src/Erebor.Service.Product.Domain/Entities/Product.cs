@@ -1,6 +1,8 @@
 ﻿using System;
 using Erebor.Service.Product.Domain.Entities.Base;
 using Erebor.Service.Product.Domain.Exceptions;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Erebor.Service.Product.Domain.Entities
 {
@@ -16,7 +18,8 @@ namespace Erebor.Service.Product.Domain.Entities
             IsActive = isActive;
             CreationDate = DateTime.Now;
         }
-
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; private set; }
         public string CategoryId { get; private set; }
         public string ProductName { get; private set; }
@@ -26,7 +29,6 @@ namespace Erebor.Service.Product.Domain.Entities
         public bool IsActive { get; private set; }
         public DateTime CreationDate { get;private set; } 
 
-        
         public Product SetProductName(string productName)
         {
             if (string.IsNullOrEmpty(productName))
