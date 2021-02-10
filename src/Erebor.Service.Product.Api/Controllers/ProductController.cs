@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Erebor.Service.Product.Core.Domain;
 using Erebor.Service.Product.SharedKernel;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,10 @@ namespace Erebor.Service.Product.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Get(CreateProductCommand command)
+        public async Task<IActionResult> Get(CreateProductCommand command)
         {
-           return Ok(Courier.Dispatch(command));
+           await Courier.Dispatch(command);
+           return Ok();
         }
     }
 }
