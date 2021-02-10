@@ -1,15 +1,17 @@
 using System;
-using MediatR;
 
-public class CreateCategoryEvent:INotification
+namespace Erebor.Service.Product.Domain.Events
 {
-    public string CategoryName { get; set; }
-    public string Description { get; set; }
-    public DateTime CreatedDate { get; set; }
-    public CreateCategoryEvent(string categoryName, string description, DateTime createdDate)
+    public class CreateCategoryEvent: INotificationEvent
     {
-        CategoryName = categoryName;
-        Description = description;
-        CreatedDate = createdDate;
+        public string CategoryName { get; set; }
+        public string Description { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public CreateCategoryEvent(string categoryName, string description, DateTime createdDate)
+        {
+            CategoryName = categoryName;
+            Description = description;
+            CreatedDate = createdDate;
+        }
     }
 }

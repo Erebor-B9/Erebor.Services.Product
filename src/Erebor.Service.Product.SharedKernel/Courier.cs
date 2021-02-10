@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Erebor.Service.Product.SharedKernel.Interfaces;
 
 namespace Erebor.Service.Product.SharedKernel
@@ -14,7 +15,7 @@ namespace Erebor.Service.Product.SharedKernel
             _provider = provider;
         }
 
-        public Result Deliver(ICommand command)
+        public Task Dispatch(ICommand command)
         {
             Type type = typeof(ICommandHandler<>);
             Type[] typeArgs = { command.GetType() };
@@ -23,9 +24,9 @@ namespace Erebor.Service.Product.SharedKernel
             dynamic handler = _provider.GetService(handlerType);
             Result result = handler.Handle((dynamic)command);
 
-            return result;
+            return Task.FromResult(result);
         }
-        public T Dispatch<T>(IQuery<T> query)
+        public Task<T> Dispatch<T>(IQuery<T> query)
         {
             Type type = typeof(IQueryHandler<,>);
             Type[] typeArgs = { query.GetType(), typeof(T) };
@@ -34,7 +35,7 @@ namespace Erebor.Service.Product.SharedKernel
             dynamic handler = _provider.GetService(handlerType);
             T result = handler.Handle((dynamic)query);
 
-            return result;
+            return Task.FromResult(result);
         }
     }
 }

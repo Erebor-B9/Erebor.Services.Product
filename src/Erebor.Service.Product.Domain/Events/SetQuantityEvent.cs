@@ -1,11 +1,12 @@
-using MediatR;
-
-public class SetQuantityEvent:INotification
+namespace Erebor.Service.Product.Domain.Events
 {
-    public int Quantity { get; set; }
-
-    public SetQuantityEvent(int quantity)
+    public class SetQuantityEvent : INotificationEvent
     {
-        Quantity = quantity;
+        public int Quantity { get; set; }
+
+        public SetQuantityEvent(int quantity)
+        {
+            Quantity = quantity;
+        }
     }
 }

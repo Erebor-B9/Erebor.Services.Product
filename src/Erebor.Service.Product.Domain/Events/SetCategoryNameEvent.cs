@@ -1,11 +1,12 @@
-using MediatR;
-
-public class SetCategoryNameEvent:INotification
+namespace Erebor.Service.Product.Domain.Events
 {
-    public string CategoryName { get; set; }
-
-    public SetCategoryNameEvent(string categoryName)
+    public class SetCategoryNameEvent: INotificationEvent
     {
-        CategoryName = categoryName;
+        public string CategoryName { get; set; }
+
+        public SetCategoryNameEvent(string categoryName)
+        {
+            CategoryName = categoryName;
+        }
     }
 }

@@ -1,11 +1,12 @@
-using MediatR;
-
-public class SetDescriptionEvent:INotification
+namespace Erebor.Service.Product.Domain.Events
 {
-    public string Description { get; set; }
-
-    public SetDescriptionEvent(string description)
+    public class SetDescriptionEvent: INotificationEvent
     {
-        Description = description;
+        public string Description { get; set; }
+
+        public SetDescriptionEvent(string description)
+        {
+            Description = description;
+        }
     }
 }

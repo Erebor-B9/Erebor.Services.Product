@@ -1,10 +1,11 @@
-using MediatR;
-
-public class SetPriceEvent:INotification
+namespace Erebor.Service.Product.Domain.Events
 {
-    public decimal Price{ get; set; }
-    public SetPriceEvent(decimal price)
+    public class SetPriceEvent: INotificationEvent
     {
-        Price = price;
+        public decimal Price{ get; set; }
+        public SetPriceEvent(decimal price)
+        {
+            Price = price;
+        }
     }
 }

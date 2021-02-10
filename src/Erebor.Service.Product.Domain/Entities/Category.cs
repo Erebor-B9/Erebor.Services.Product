@@ -1,5 +1,6 @@
 ﻿using System;
 using Erebor.Service.Product.Domain.Entities.Base;
+using Erebor.Service.Product.Domain.Events;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
