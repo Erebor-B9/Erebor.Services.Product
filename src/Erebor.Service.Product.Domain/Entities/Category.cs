@@ -12,6 +12,7 @@ namespace Erebor.Service.Product.Domain.Entities
             CategoryName = categoryName;
             Description = description;
             CreatedDate = DateTime.Now;
+            AddEvent(new CreateCategoryEvent(categoryName,description,CreatedDate));
         }
 
         [BsonId]
@@ -24,12 +25,14 @@ namespace Erebor.Service.Product.Domain.Entities
         public Category SetCategoryName(string categoryName)
         {
             CategoryName = categoryName;
+            AddEvent(new SetCategoryNameEvent(categoryName));
             return this;
         }
 
         public Category SetCategoryDescription(string description)
         {
             Description = description;
+            AddEvent(new SetCategoryDescriptionEvent(description));
             return this;
         }
         public static Category CreateCategory(string categoryName, string description)

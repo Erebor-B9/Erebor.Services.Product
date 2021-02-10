@@ -1,5 +1,6 @@
 ﻿using System;
 using Erebor.Service.Product.Domain.Entities.Base;
+using Erebor.Service.Product.Domain.Events;
 using Erebor.Service.Product.Domain.Exceptions;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -17,6 +18,7 @@ namespace Erebor.Service.Product.Domain.Entities
             Quantity = quantity;
             IsActive = isActive;
             CreationDate = DateTime.Now;
+            AddEvent(new CreateProductEvent(categoryId, productName, description, price, quantity, isActive));
         }
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -27,7 +29,7 @@ namespace Erebor.Service.Product.Domain.Entities
         public decimal Price { get; private set; }
         public int Quantity { get; private set; }
         public bool IsActive { get; private set; }
-        public DateTime CreationDate { get;private set; } 
+        public DateTime CreationDate { get; private set; }
 
         public Product SetProductName(string productName)
         {
@@ -36,6 +38,7 @@ namespace Erebor.Service.Product.Domain.Entities
                 throw new BusinessException("Product Name can not be null or empty");
             }
             ProductName = productName;
+            AddEvent(new SetProductNameEvent(productName));
             return this;
         }
 
@@ -47,31 +50,34 @@ namespace Erebor.Service.Product.Domain.Entities
             }
 
             Description = description;
+            AddEvent(new SetDescriptionEvent(description));
             return this;
         }
 
         public Product SetQuantity(int quantity)
         {
-            if (quantity<=0)
+            if (quantity <= 0)
             {
-                 throw new BusinessException("Quantity can not be zero or negative");
+                throw new BusinessException("Quantity can not be zero or negative");
             }
             Quantity = quantity;
+            AddEvent(new SetQuantityEvent(quantity));
             return this;
         }
 
         public Product SetPrice(decimal price)
         {
-            if (price<=0)
+            if (price <= 0)
             {
                 throw new BusinessException("Price can not be zero or negative");
             }
             Price = price;
+            AddEvent(new SetPriceEvent(price));
             return this;
         }
 
         public static Product CreateProduct(string categoryId, string productName, string description, decimal price,
             int quantity, bool isActive)
-            => new Product(categoryId, productName, description, price, quantity,isActive);
+            => new Product(categoryId, productName, description, price, quantity, isActive);
     }
 }

@@ -12,4 +12,5 @@ namespace Erebor.Service.Product.SharedKernel.Interfaces
     {
         TResult Handle(TQuery query);
     }
+    
 }
