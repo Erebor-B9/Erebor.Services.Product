@@ -1,3 +1,4 @@
+using Erebor.Service.Product.Core.Domain;
 using Erebor.Service.Product.SharedKernel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -9,16 +10,17 @@ namespace Erebor.Service.Product.Api.Controllers
     public class ProductController: BaseController
     {
         public readonly ILogger<ProductController> _logger;
-
-        public ProductController(ILogger<ProductController> logger)
+        public readonly Courier Courier;
+        public ProductController(ILogger<ProductController> logger, Courier courier)
         {
+            Courier = courier;
             _logger = logger;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpPost]
+        public IActionResult Get(CreateProductCommand command)
         {
-            return Ok();
+           return Ok(Courier.Dispatch(command));
         }
     }
 }

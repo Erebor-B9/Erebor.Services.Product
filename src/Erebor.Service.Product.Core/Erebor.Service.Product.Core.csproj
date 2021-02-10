@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Erebor.Service.Product.Domain\Erebor.Service.Product.Domain.csproj" />
+    <ProjectReference Include="..\Erebor.Service.Product.SharedKernel\Erebor.Service.Product.SharedKernel.csproj" />
   </ItemGroup>
 
   <ItemGroup>

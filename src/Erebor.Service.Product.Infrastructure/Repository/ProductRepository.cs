@@ -17,6 +17,7 @@ namespace Erebor.Service.Product.Infrastructure.Repository
         public async Task AddProductAsync(Domain.Entities.Product product)
         {
             await Context.Product.InsertOneAsync(product);
+           
         }
 
         public async Task DeleteProductAsync(string id)

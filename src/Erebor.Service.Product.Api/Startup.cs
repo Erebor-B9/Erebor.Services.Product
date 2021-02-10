@@ -11,7 +11,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Erebor.Service.Product.Core.Domain;
+using Erebor.Service.Product.Core.Interface;
+using Erebor.Service.Product.Domain.Repositories;
 using Erebor.Service.Product.Infrastructure.Context;
+using Erebor.Service.Product.Infrastructure.Repository;
+using Erebor.Service.Product.SharedKernel;
+using Erebor.Service.Product.SharedKernel.Interfaces;
+using MongoDB.Driver;
 
 namespace Erebor.Service.Product.Api
 {
@@ -27,7 +34,17 @@ namespace Erebor.Service.Product.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(Configuration.GetSection("MongoDbSettings").Get<MongoDbSettings>());
+            services.AddScoped<Courier>();
+            services.Configure<MongoDbSettings>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("MongoDbSettings:ConnectionString").Value;
+                options.Database = Configuration.GetSection("MongoDbSettings:Database").Value;
+            });
+            services.AddScoped<IApplicationContext, ApplicationContext>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            
+            services.AddTransient<ICommandHandler<CreateProductCommand>, CreateProductCommandHandler>();
+          
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
