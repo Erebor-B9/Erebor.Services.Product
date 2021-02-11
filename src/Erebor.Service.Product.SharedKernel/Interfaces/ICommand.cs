@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Erebor.Service.Product.SharedKernel.Interfaces
 {
@@ -10,7 +11,7 @@ namespace Erebor.Service.Product.SharedKernel.Interfaces
 
     public interface ICommandHandler<TCommand> where TCommand : ICommand
     {
-        Result Handle(TCommand command);
+        Task<Result> Handle(TCommand command);
     }
 
     public enum Result

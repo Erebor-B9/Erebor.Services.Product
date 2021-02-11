@@ -11,18 +11,25 @@ namespace Erebor.Service.Product.Api.Controllers
     public class ProductController: BaseController
     {
         public readonly ILogger<ProductController> _logger;
-        public readonly Courier Courier;
-        public ProductController(ILogger<ProductController> logger, Courier courier)
+        public readonly ICourier _courier;
+        public ProductController(ILogger<ProductController> logger, ICourier courier)
         {
-            Courier = courier;
+            _courier = courier;
             _logger = logger;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Get(CreateProductCommand command)
+        [HttpPost("Product")]
+        public   IActionResult CreateProduct(CreateProductCommand command)
         {
-           await Courier.Dispatch(command);
-           return Ok();
+           _courier.Dispatch(command);
+           return  Ok();
+        }
+
+        [HttpPost]
+        public IActionResult CreateCategory(CreateCategoryCommand command)
+        {
+            _courier.Dispatch(command);
+            return Ok();
         }
     }
 }

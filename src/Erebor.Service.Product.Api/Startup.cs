@@ -34,7 +34,7 @@ namespace Erebor.Service.Product.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<Courier>();
+            services.AddScoped<ICourier,Courier>();
             services.Configure<MongoDbSettings>(options =>
             {
                 options.ConnectionString = Configuration.GetSection("MongoDbSettings:ConnectionString").Value;
@@ -44,7 +44,8 @@ namespace Erebor.Service.Product.Api
             services.AddScoped<IProductRepository, ProductRepository>();
             
             services.AddTransient<ICommandHandler<CreateProductCommand>, CreateProductCommandHandler>();
-          
+            services.AddTransient<ICommandHandler<CreateCategoryCommand>, CreateCategoryCommandHandler>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

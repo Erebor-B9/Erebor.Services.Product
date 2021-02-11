@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Erebor.Service.Product.Core.Interface;
 using Erebor.Service.Product.Domain.Repositories;
 using Erebor.Service.Product.SharedKernel.Interfaces;
@@ -24,14 +25,12 @@ namespace Erebor.Service.Product.Core.Domain
         {
             _productRepository = productRepository;
         }
-        public Result Handle(CreateProductCommand command)
+        public async Task<Result> Handle(CreateProductCommand command)
         {
             var product = Product.Domain.Entities.Product.CreateProduct(command.CategoryId, command.ProductName, command.Description
                 , command.Price, command.Quantity, command.IsActive);
-            var result = _productRepository.AddProductAsync(product);
-            if (result.IsCompleted)
-                return Result.Successful;
-            return Result.UnSuccessful;
+             await _productRepository.AddProductAsync(product);
+             return Result.Successful;
 
         }
     }
