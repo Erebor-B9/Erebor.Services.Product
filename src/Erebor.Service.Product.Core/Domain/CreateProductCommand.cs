@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Erebor.Service.Product.Core.Interface;
 using Erebor.Service.Product.Domain.Repositories;
-using Erebor.Service.Product.SharedKernel.Interfaces;
+using MediatR;
+
 
 namespace Erebor.Service.Product.Core.Domain
 {
-    public class CreateProductCommand : ICommand
+    public class CreateProductCommand : IRequest
     {
         public string Id { get; set; }
         public string CategoryId { get; set; }
@@ -18,20 +20,20 @@ namespace Erebor.Service.Product.Core.Domain
         
     }
 
-    public sealed class CreateProductCommandHandler : ICommandHandler<CreateProductCommand>
+    public sealed class CreateProductCommandHandler : IRequestHandler<CreateProductCommand>
     {
         public readonly IProductRepository _productRepository;
         public CreateProductCommandHandler(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
-        public async Task<Result> Handle(CreateProductCommand command)
+        
+        public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = Product.Domain.Entities.Product.CreateProduct(command.CategoryId, command.ProductName, command.Description
-                , command.Price, command.Quantity, command.IsActive);
-             await _productRepository.AddProductAsync(product);
-             return Result.Successful;
-
+            var product = Product.Domain.Entities.Product.CreateProduct(request.CategoryId, request.ProductName, request.Description
+                , request.Price, request.Quantity, request.IsActive);
+            await _productRepository.AddProductAsync(product);
+            return Unit.Value;
         }
     }
 }

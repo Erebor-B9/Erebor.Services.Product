@@ -6,14 +6,23 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Erebor.Service.Product.Domain.Entities
 {
-    public class Category:Entity
+    public class Category : Entity
     {
-        public Category(string categoryName, string description)
+        protected Category(string categoryName, string description)
         {
             CategoryName = categoryName;
             Description = description;
             CreatedDate = DateTime.Now;
-            AddEvent(new CreateCategoryEvent(categoryName,description,CreatedDate));
+            AddEvent(new CreateCategoryEvent(categoryName, description, CreatedDate));
+        }
+
+        protected Category(string id, string categoryName, string description)
+        {
+            Id = id;
+            CategoryName = categoryName;
+            Description = description;
+            CreatedDate = DateTime.Now;
+            AddEvent(new CreateCategoryEvent(categoryName, description, CreatedDate));
         }
 
         [BsonId]
@@ -39,6 +48,10 @@ namespace Erebor.Service.Product.Domain.Entities
         public static Category CreateCategory(string categoryName, string description)
         {
             return new Category(categoryName, description);
+        }
+        public static Category CreateCategory(string id, string categoryName, string description)
+        {
+            return new Category(id, categoryName, description);
         }
     }
 }

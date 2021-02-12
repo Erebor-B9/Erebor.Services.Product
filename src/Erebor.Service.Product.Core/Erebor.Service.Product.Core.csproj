@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Erebor.Service.Product.Domain\Erebor.Service.Product.Domain.csproj" />
-    <ProjectReference Include="..\Erebor.Service.Product.SharedKernel\Erebor.Service.Product.SharedKernel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -10,11 +9,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.11.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\5.0.0\ref\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
 </Project>

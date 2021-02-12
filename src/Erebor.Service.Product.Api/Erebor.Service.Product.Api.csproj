@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Erebor.Service.Product.Core\Erebor.Service.Product.Core.csproj" />
     <ProjectReference Include="..\Erebor.Service.Product.Infrastructure\Erebor.Service.Product.Infrastructure.csproj" />
-    <ProjectReference Include="..\Erebor.Service.Product.SharedKernel\Erebor.Service.Product.SharedKernel.csproj" />
   </ItemGroup>
 
 </Project>
