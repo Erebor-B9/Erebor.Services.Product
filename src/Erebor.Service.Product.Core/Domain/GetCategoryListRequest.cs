@@ -22,7 +22,7 @@ namespace Erebor.Service.Product.Core.Domain
 
         public async Task<List<Category>> Handle(GetCategoryListRequest request, CancellationToken cancellationToken)
         {
-            return await _categoryRepository.GetCategoryListAsync(x => x.CategoryName.Contains(request.Name));
+            return await _categoryRepository.GetCategoryListAsync();
         }
     }
 }

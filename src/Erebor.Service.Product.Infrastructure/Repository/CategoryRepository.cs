@@ -33,10 +33,10 @@ namespace Erebor.Service.Product.Infrastructure.Repository
             return await  category.FirstOrDefaultAsync();
         }
 
-        public async Task<List<Category>> GetCategoryListAsync(Expression<Func<Category, bool>> filter = null)
+        public async Task<List<Category>> GetCategoryListAsync()
         {
-            var categoryList = await _context.Category.FindAsync(filter);
-            return await categoryList.ToListAsync();
+            var categoryList = await _context.Category.FindSync(x=>true).ToListAsync();
+            return categoryList;
         }
 
         public async Task UpdateCategoryAsync(Category category)

@@ -20,9 +20,7 @@ namespace Erebor.Service.Product.Domain.Entities
             CreationDate = DateTime.Now;
             AddEvent(new CreateProductEvent(categoryId, productName, description, price, quantity, isActive));
         }
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; private set; }
+       
         public string CategoryId { get; private set; }
         public string ProductName { get; private set; }
         public string Description { get; private set; }

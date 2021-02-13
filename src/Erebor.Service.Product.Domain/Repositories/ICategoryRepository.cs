@@ -12,7 +12,7 @@ namespace Erebor.Service.Product.Domain.Repositories
         Task DeleteCategoryAsync(string categoryId);
         Task UpdateCategoryAsync(Category category);
         Task<Category> GetCategoryAsync(string name = null);
-        Task<List<Category>> GetCategoryListAsync(Expression<Func<Category,bool>> filter =null);
+        Task<List<Category>> GetCategoryListAsync();
 
     }
 }

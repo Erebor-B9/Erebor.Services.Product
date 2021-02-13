@@ -25,9 +25,7 @@ namespace Erebor.Service.Product.Domain.Entities
             AddEvent(new CreateCategoryEvent(categoryName, description, CreatedDate));
         }
 
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+     
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }

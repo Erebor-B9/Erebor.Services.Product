@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Erebor.Service.Product.Domain.Events;
 using MediatR;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Erebor.Service.Product.Domain.Entities.Base
 {
     public class Entity
     {
+        [BsonId] public string Id { get;  set; } = Guid.NewGuid().ToString();
         private List<INotificationEvent> _events;
-        public IReadOnlyCollection<INotificationEvent> Events => _events?.AsReadOnly();
+        protected IReadOnlyCollection<INotificationEvent> Events => _events?.AsReadOnly();
 
         protected void AddEvent(INotificationEvent @event)
         {
